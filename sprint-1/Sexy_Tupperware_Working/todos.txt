@@ -1,0 +1,45 @@
+OPTION 1: Preset counter for 7 days (uses temp sensor as trigger, fully automated)
+
+1 A) Configure stages of light readings
+  - Lights off: Waiting
+  - Blinks twice: starts with push of button
+  - Light countdown: Placed in fridge (timer auto starts when Temp < 30F)
+  - Blinks yellow: Time passed set threshold
+  - Auto turn off: Temp > 60F for > 4 hours
+  - Light sensor triggers neopixel to dim and turn up
+    (not turn off because that might destroy the neopixel counting)
+
+NEXT STEPS:
+
+1 B) Configure stages of light readings
+  - Lights off: Waiting
+  - Light countdown: Placed in fridge (timer auto starts when Temp < 30F)
+  - Blinks yellow: Time passed set threshold
+  - Auto turn off: Temp > 60F for > 4 hours
+  - Light sensor triggers neopixel to dim and turn up
+    (not turn off because that might destroy the neopixel counting)
+
+
+OPTION 2: Custom counter for 5-10 days (triggers by "4095" in potentiometer)
+
+Configure stages of light readings
+  - Waiting
+  - Blinks blue: Timer started (potentiometer goes to 10)
+  - Light countdown: Timer set (you can see it start to move)
+  - Blinks yellow: Time passed set threshold
+  - Temperature sensor could be used to auto turn off (if warm for > 4 hours)
+  - Light sensor triggers neopixel to dim and turn up
+    (not turn off because that might destroy the neopixel counting)
+
+
+DONE
+Connect new particle to web
+Filter out -196
+Set up potentiometer
+     Convert voltage change to days and mark potentiometer
+     As percent of max min range?
+
+
+Water sensor project from Ran: http://integratedinnovation.xsead.cmu.edu/gallery/projects/ambient-baby-bottle-indicator
+
+Wiring for other low temp sensor from Zheng Ke: http://integratedinnovation.xsead.cmu.edu/gallery/projects/lemino

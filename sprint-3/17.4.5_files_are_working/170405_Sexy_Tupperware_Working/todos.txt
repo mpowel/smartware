@@ -1,0 +1,87 @@
+10:34 attached sensor (~150)    (fresh air)
+10:35 added strawberry  (range 160 - 627)
+11:54 removed strawberry   (max 627)
+11:56 started control test   (~190)      (removed strawberry & washed tupperware)
+1:43  opened lid
+1:50  added fresh cut strawberry (not rotting)      (150 - 320)
+3:15  opened lid   
+3:16  moved to yogurt  (has been sitting out for 2 hours)  230 @ 95F - 216 @91
+   -  also added plexiglass frame (need to test gas reading from frame only)
+   -  can’t seal it
+3:53  moved to sealed container
+
+https://thingspeak.com/channels/266441/private_show
+
+Channel ID: 266441
+Author: mpowel
+Access: Private
+API Key: M2LG5F54QXVBE4HH
+
+Getting your access_token:
+https://community.particle.io/t/cloud-api-for-access-token/1020/4
+
+Device ID and access token:
+https://docs.particle.io/guide/how-to-build-a-product/authentication/#access-tokens
+
+Worked
+curl "https://api.particle.io/v1/devices/2d0027001951353337343731/melsGas?access_token=bf00a614cc1390055f98663f4f1f264f0f4120ff"
+
+{"cmd":"VarReturn","name":"melsGas","result":759,"coreInfo":{"last_app":"","last_heard":"2017-05-02T04:11:28.070Z","connected":true,"last_handshake_at":"2017-05-02T04:11:14.143Z","deviceID":"2d0027001951353337343731","product_id":6}}
+
+
+Worked:
+curl "https://api.particle.io/v1/devices/2d0027001951353337343731/temperatureF?access_token=bf00a614cc1390055f98663f4f1f264f0f4120ff"
+
+{"cmd":"VarReturn","name":"temperatureF","result":93.98750305175781,"coreInfo":{"last_app":"","last_heard":"2017-05-02T03:57:41.223Z","connected":true,"last_handshake_at":"2017-05-02T03:01:30.406Z","deviceID":"2d0027001951353337343731","product_id":6}}
+
+
+
+
+
+
+
+OPTION 1: Preset counter for 7 days (uses temp sensor as trigger, fully automated)
+
+1 A) Configure stages of light readings
+  - Lights off: Waiting
+  - Blinks twice: starts with push of button
+  - Light countdown: Placed in fridge (timer auto starts when Temp < 30F)
+  - Blinks yellow: Time passed set threshold
+  - Auto turn off: Temp > 60F for > 4 hours
+  - Light sensor triggers neopixel to dim and turn up
+    (not turn off because that might destroy the neopixel counting)
+
+NEXT STEPS:
+
+1 B) Configure stages of light readings
+  - Lights off: Waiting
+  - Light countdown: Placed in fridge (timer auto starts when Temp < 30F)
+  - Blinks yellow: Time passed set threshold
+  - Auto turn off: Temp > 60F for > 4 hours
+  - Light sensor triggers neopixel to dim and turn up
+    (not turn off because that might destroy the neopixel counting)
+
+
+OPTION 2: Custom counter for 5-10 days (triggers by "4095" in potentiometer)
+
+Configure stages of light readings
+  - Waiting
+  - Blinks blue: Timer started (potentiometer goes to 10)
+  - Light countdown: Timer set (you can see it start to move)
+  - Blinks yellow: Time passed set threshold
+  - Temperature sensor could be used to auto turn off (if warm for > 4 hours)
+  - Light sensor triggers neopixel to dim and turn up
+    (not turn off because that might destroy the neopixel counting)
+
+
+DONE
+Connect new particle to web
+Filter out -196
+Set up potentiometer
+     Convert voltage change to days and mark potentiometer
+     As percent of max min range?
+
+
+Water sensor project from Ran: http://integratedinnovation.xsead.cmu.edu/gallery/projects/ambient-baby-bottle-indicator
+
+Wiring for other low temp sensor from Zheng Ke: http://integratedinnovation.xsead.cmu.edu/gallery/projects/lemino
